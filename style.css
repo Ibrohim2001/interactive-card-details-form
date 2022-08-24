@@ -1,0 +1,195 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&display=swap');
+:root {
+  --gradient: linear-gradient( to right, hsl(249, 99%, 64%), hsl(278, 94%, 30%));
+  --red-color: hsl(0, 100%, 66%);
+  --white-color: hsl(0, 0%, 100%);
+  --light-color: hsl(270, 3%, 87%);
+  --grayish-violet: hsl(279, 6%, 55%);
+  --dark-violet: hsl(278, 68%, 11%);
+}
+*,
+::before,
+::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-size: 16px;
+  font-family: 'Space Grotesk', sans-serif;
+}
+.main {
+  width: 100%;
+  min-height: 100vh;
+  padding: 0 4rem 0 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  place-items: center;
+  background: url('./img/bg-main-desktop.png') top left no-repeat;
+  background-size: contain;
+}
+.card_images {
+  width: 450px;
+  display: flex;
+  flex-direction: column;
+}
+.card_front {
+  width: 350px;
+  height: 200px;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  border-radius: 10px;
+  background: url('./img/bg-card-front.png') top left no-repeat;
+  background-size: contain;
+}
+.card_details {
+  width: 100%;
+  height: 90px;
+  padding: 0 0.5rem;
+  margin-top: 1rem;
+  display: grid;
+  grid-template-areas: 
+  'number number number number'
+  'name name name date';
+  align-items: center;
+  color: var(--white-color);
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+.card_number {
+  grid-area: number;
+  display: flex;
+  margin-top: 0.8rem;
+  font-size: 1.4rem;
+  letter-spacing: 2px;
+}
+.card_number span {
+  margin-right: 1rem;
+}
+.cardholder_name {
+  width: 200px;
+  text-transform: uppercase;
+  grid-area: name;
+  font-size: .7rem;
+  font-weight: 500;
+}
+.exp_date {
+  font-size: .8rem;
+  grid-area: date;
+}
+.card_back {
+  width: 350px;
+  height: 200px;
+  padding: 1rem;
+  margin-right: 2rem;
+  border-radius: 10px;
+  background: url('./img/bg-card-back.png') top left no-repeat;
+  background-size: contain;
+  align-self: flex-end;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.cvv_number {
+  color: var(--white-color);
+  margin-bottom: 10px;
+  margin-right: 2rem;
+  font-size: 0.8rem;
+}
+.form {
+  width: 350px;
+  margin-right: 2rem;
+  display: grid;
+  grid-template-areas: 
+  'name name name name'
+  'number number number number'
+  'date date cvv cvv'
+  'button button button button';
+}
+.form_group {
+  margin: 0.3rem 0;
+  height: 80px;
+}
+.form_group:nth-child(1) {
+  grid-area: name;
+}
+.form_group:nth-child(2) {
+  grid-area: number;
+}
+.form_group:nth-child(3) {
+  grid-area: date;
+  display: grid;
+  grid-template-areas: 
+  'label label label label'
+  'month month year year'
+  'err err err err';
+  grid-gap: 0 10px;
+  margin-right: 10px;
+  margin-top: 8px;
+}
+.form_group:nth-child(3) label {
+  grid-area: label;
+}
+.form_group:nth-child(4) {
+  grid-area: cvv;
+}
+.form_group label {
+  color: var(--dark-violet);
+  font-size: 0.7rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.form_group input {
+  display: block;
+  width: 100%;
+  padding: 0.5rem 1rem;
+  margin: 0.4rem 0 0.1rem 0;
+  color: var(--dark-violet);
+  border: 1.5px solid var(--light-color); 
+  border-radius: 5px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  outline: none;
+  transition: all 0.15s ease;
+}
+.form_group:nth-child(3) .month_input {
+  grid-area: month;
+  height: 35px;
+}
+.form_group:nth-child(3) .year_input {
+  grid-area: year;
+  height: 35px;
+}
+.form_group:nth-child(3) .error_msg {
+  grid-area: err;
+}
+.form_group input:focus,
+.form_group input:active {
+  border-color: var(--gradient);
+  transition: all 0.15s ease;
+}
+::placeholder {
+  color: var(--light-color);
+}
+.form_group .error_msg {
+  font-size: 0.7rem;
+  color: var(--red-color);
+  visibility: hidden;
+}
+.form_group.error .error_msg {
+  visibility: visible;
+}
+.btn {
+  padding: 10px 0;
+  margin-top: 1rem;
+  grid-area: button;
+  color: var(--white-color);
+  background-color: var(--dark-violet);
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+.form_group.error input {
+  border-color: var(--red-color);
+}

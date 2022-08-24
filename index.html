@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Credit Card Details Form</title>
+  <link rel="stylesheet" href="./style.css">
+  <link rel="shortcut icon" href="./img/favicon-32x32.png" type="image/x-icon">
+</head>
+<body>
+  <main class="main">
+    <section class="card_images">
+      <div class="card_front">
+        <img src="./img/card-logo.svg" alt="" class="card_logo">
+        <div class="card_details">
+          <p class="card_number"><span>0000</span><span>0000</span><span>0000</span><span>0000</span></p>
+          <p class="cardholder_name">Jane Applesed</p>
+          <p class="exp_date">00/00</p>
+        </div>
+      </div>
+      <div class="card_back">
+        <p class="cvv_number">000</p>
+      </div>
+    </section>
+    <form class="form">
+      <div class="form_group">
+        <label for="cardholder_name">Cardholder name</label>
+        <input type="text" placeholder="e.g Jane Applesed" class="name_input">
+        <span class="error_msg"></span>
+      </div>
+      <div class="form_group">
+        <label for="card_name">Card number</label>
+        <input type="text" placeholder="e.g 1234 5678 9012 0000" minlength="16" maxlength="16" class="number_input">
+        <span class="error_msg"></span>
+      </div>
+      <div class="form_group">
+        <label for="exp_date">Exp date(mm/yy)</label>
+          <input type="text" placeholder="mm" class="month_input" maxlength="2">
+          <input type="text" placeholder="yy" class="year_input" maxlength="2">
+        <span class="error_msg"></span>
+      </div>
+      <div class="form_group">
+        <label for="cvv">CVV</label>
+        <input type="text" placeholder="e.g 123" class="cvv_input" maxlength="3">
+        <span class="error_msg"></span>
+      </div>
+      <button class="btn" type="submit">Confirm</button>
+    </form>
+  </main>
+  <script src="./app.js"></script>
+</body>
+</html>
