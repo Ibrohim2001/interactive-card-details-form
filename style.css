@@ -193,7 +193,7 @@ body {
 .form_group.error input {
   border-color: var(--red-color);
 }
-@media (max-width: 375px) {
+@media (max-width: 600px) {
   .main {
     width: 100%;
     min-height: 100vh;
