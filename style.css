@@ -107,6 +107,9 @@ body {
   'date date cvv cvv'
   'button button button button';
 }
+.form.hidden {
+  display: none;
+}
 .form_group {
   margin: 0.3rem 0;
   height: 80px;
@@ -156,10 +159,12 @@ body {
 .form_group:nth-child(3) .month_input {
   grid-area: month;
   height: 35px;
+  margin-top: 3px;
 }
 .form_group:nth-child(3) .year_input {
   grid-area: year;
   height: 35px;
+  margin-top: 3px;
 }
 .form_group:nth-child(3) .error_msg {
   grid-area: err;
@@ -187,13 +192,108 @@ body {
   color: var(--white-color);
   background-color: var(--dark-violet);
   border-radius: 5px;
+  border: none;
   font-size: 1rem;
   cursor: pointer;
 }
 .form_group.error input {
   border-color: var(--red-color);
 }
+
+.complete_state {
+  display: none;
+  width: 300px;
+  margin: 3rem auto;
+  text-align: center;
+}
+.complete_state img {
+  width: 60px;
+}
+.complete_state h1{
+  margin: 1rem 0;
+  font-weight: 500;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+.complete_state p {
+  color: var(--grayish-violet);
+  font-size: 0.9;
+}
+.complete_state button {
+  width: 100%;
+}
+.complete_state.visible {
+  display: block;
+}
 @media (max-width: 600px) {
+  .main {
+    width: 100%;
+    min-height: auto;
+    padding: 0;
+    margin: 0;
+    display: block;
+    place-items: center;
+    background: transparent;
+  }
+  .card_images {
+    width: 100%;
+    min-height: 320px;
+    position: relative;
+    background: url('./img/bg-main-mobile.png') top left no-repeat;
+    background-size: cover;
+  }
+  .card_front {
+    width: 280px;
+    height: 200px;
+    padding: 1rem;
+    margin-bottom: 0;
+    position: absolute;
+    bottom: -10px;
+    left: 10%;
+    z-index: 1;
+  }
+  .card_logo {
+    width: 70px;
+  }
+  .card_details {
+    margin-top: 0;
+    letter-spacing: 1px;
+  }
+  .card_number {
+    margin-top: 0.8rem;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+  }
+  .card_number span {
+    margin-right: 0.5rem;
+  }
+  .cardholder_name {
+    width: auto;
+  }
+  .card_back {
+    width: 280px;
+    height: 200px;
+    margin-right: 0;
+    position: absolute;
+    top: 40px;
+    right: 10%;
+    z-index: 0;
+  }
+  .cvv_number {
+    margin-bottom: 3rem;
+    margin-right: 1rem;
+    font-size: 0.7rem;
+  }
+  .form {
+    width: 95%;
+    margin-right: 0;
+    padding: 2rem 1rem;
+  }
+  .form_group:nth-child(3) {
+    margin-top: 8px;
+  }
+}
+@media (max-width: 375px) {
   .main {
     width: 100%;
     min-height: 100vh;
@@ -201,12 +301,14 @@ body {
     margin: 0;
     display: block;
     place-items: center;
-    background: url('./img/bg-main-mobile.png') top left no-repeat;
+    /* background: url('./img/bg-main-mobile.png') top left no-repeat; */
   }
   .card_images {
-    width: 90%;
+    width: 100%;
     min-height: 320px;
     position: relative;
+    background: url('./img/bg-main-mobile.png') top left no-repeat;
+    background-size: cover;
   }
   .card_front {
     width: 280px;
@@ -242,7 +344,7 @@ body {
     margin-right: 0;
     position: absolute;
     top: 40px;
-    right: -25px;
+    right: 5%;
     z-index: 0;
   }
   .cvv_number {
@@ -251,8 +353,8 @@ body {
     font-size: 0.7rem;
   }
   .form {
-    width: 100%;
-    margin-right: 0;
+    width: 95%;
+    margin: 0 auto;
     padding: 2rem 1rem;
   }
   .form_group:nth-child(3) {

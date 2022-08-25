@@ -4,7 +4,11 @@ const numberInput = document.querySelector('.number_input');
 const monthInput = document.querySelector('.month_input');
 const yearInput = document.querySelector('.year_input');
 const cvvInput = document.querySelector('.cvv_input');
-// console.log(form)
+const inputs = document.querySelectorAll('input');
+const completedState = document.querySelector('.complete_state');
+// console.log(completedState)
+
+const isNumber = /^[0-9]+$/;
 
 
 function showError(input, message) {
@@ -18,61 +22,52 @@ function showSucces(input) {
   formGroup.className = 'form_group';
 }
 
-function checkNumbers(input) {
-  return /^[0-9]+$/.test(input);  
+function checkHasValue(inputArr) {
+  inputArr.forEach(input => {
+    if(input.value.trim() === '') {
+      showError(input);
+      completedState.className = 'complete_state';
+      form.className = 'form'
+    } else {
+      showSucces(input);
+      completedState.className = 'complete_state visible';
+      form.className = 'form hidden'
+    }
+  });
 }
-checkNumbers()
-function checkDate(input) {
-  return /^[0-9]+$/.test(input);  
+
+function checkNumbers(input) {
+  if(isNumber.test(input.value)) {
+    showSucces(input);
+  } else if(input.value === '') {
+    showError(input, 'Enter card numbers')
+  } else {
+    showError(input, 'Wrong format, only number');
+  }
+
+}
+
+function checkDate(dateArr) {
+  dateArr.forEach(input => {
+    if(isNumber.test(input.value)) {
+      showSucces(input);
+    } else if(input.value === '') {
+      showError(input, "Can't be blank");
+    } else {
+      showError(input, 'Wrong format');
+    }
+  });
 }
 
 form.addEventListener('submit', (e) => {
   e.preventDefault();
-
+  checkHasValue([nameInput, numberInput, monthInput, yearInput, cvvInput])
 
   if(nameInput.value === '') {
     showError(nameInput, 'Name is required')
   } else {
     showSucces(nameInput);
   }
-
-  if(numberInput.value === '') {
-    showError(numberInput, 'Numbers input should be filled');
-  } else if(!checkNumbers(numberInput.value)) {
-    showError(numberInput, 'Wrong format, numbers only')
-  } else {
-    showSucces(numberInput)
-  }
-
-  if(monthInput.value === '') {
-    showError(monthInput, "Can't be blank")
-  } else if(!checkDate(monthInput.value)) {
-    showError(monthInput, '2 digits only')
-  } else {
-    showSucces(monthInput)
-  }
-  if(yearInput.value === '') {
-    showError(yearInput, "Can't be blank")
-  } else if(!checkDate(yearInput.value)) {
-    showError(yearInput, '2 digits only')
-  } else {
-    showSucces(yearInput)
-  }
-
-  if(cvvInput.value === '') {
-    showError(cvvInput, "CVV is required")
-  } else if(!checkDate(cvvInput.value)) {
-    showError(cvvInput, '3 digits only')
-  } else {
-    showSucces(cvvInput)
-  }
-  // if(monthInput.value === '') {
-  //   const formEl = monthInput.parentElement;
-  //   const errMessage = formEl.querySelector('span');
-  //   errMessage.textContent = 'Can not be blank';
-  //   formEl.className = 'form_group error';
-  // } else {
-  //   const formEl = monthInput.parentElement; 
-  //   formEl.className = 'form_group';
-  // }
+  checkNumbers(numberInput);
+  checkDate([monthInput, yearInput, cvvInput]);
 });
