@@ -232,15 +232,14 @@ body {
     padding: 0;
     margin: 0;
     display: block;
-    place-items: center;
     background: transparent;
   }
   .card_images {
     width: 100%;
-    min-height: 320px;
+    min-height: 340px;
     position: relative;
     background: url('./img/bg-main-mobile.png') top left no-repeat;
-    background-size: cover;
+    background-size: contain;
   }
   .card_front {
     width: 280px;
@@ -248,7 +247,7 @@ body {
     padding: 1rem;
     margin-bottom: 0;
     position: absolute;
-    bottom: -10px;
+    bottom: -30px;
     left: 10%;
     z-index: 1;
   }
@@ -296,61 +295,21 @@ body {
 @media (max-width: 375px) {
   .main {
     width: 100%;
-    min-height: 100vh;
-    padding: 0;
-    margin: 0;
-    display: block;
-    place-items: center;
-    /* background: url('./img/bg-main-mobile.png') top left no-repeat; */
   }
   .card_images {
     width: 100%;
     min-height: 320px;
     position: relative;
     background: url('./img/bg-main-mobile.png') top left no-repeat;
-    background-size: cover;
+    background-size: contain;
   }
   .card_front {
-    width: 280px;
-    height: 200px;
-    padding: 1rem;
-    margin-bottom: 0;
-    position: absolute;
     bottom: -10px;
     left: 1rem;
-    z-index: 1;
-  }
-  .card_logo {
-    width: 70px;
-  }
-  .card_details {
-    margin-top: 0;
-    letter-spacing: 1px;
-  }
-  .card_number {
-    margin-top: 0.8rem;
-    font-size: 1.2rem;
-    letter-spacing: 1px;
-  }
-  .card_number span {
-    margin-right: 0.5rem;
-  }
-  .cardholder_name {
-    width: auto;
   }
   .card_back {
-    width: 280px;
-    height: 200px;
-    margin-right: 0;
-    position: absolute;
     top: 40px;
     right: 5%;
-    z-index: 0;
-  }
-  .cvv_number {
-    margin-bottom: 3rem;
-    margin-right: 1rem;
-    font-size: 0.7rem;
   }
   .form {
     width: 95%;
